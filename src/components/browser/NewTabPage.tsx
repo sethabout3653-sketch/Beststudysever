@@ -60,7 +60,7 @@ export function NewTabPage({ onNavigate, onOpenGames }: Props) {
                 : "text-white drop-shadow-[0_0_20px_rgba(255,255,255,0.2)]"
             }`}
           >
-            {settings.discreetMode ? "study portal" : "frosted"}
+            {settings.discreetMode ? "study portal" : "StudyHub"}
           </motion.span>
           <motion.div
             variants={{

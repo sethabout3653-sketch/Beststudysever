@@ -31,7 +31,7 @@ export type Cloak = {
 };
 
 export const CLOAKS: Cloak[] = [
-  { id: "none", label: "None (Frosted)", title: "Frosted", icon: FROSTED_ICON_SVG },
+  { id: "none", label: "None (StudyHub)", title: "StudyHub", icon: FROSTED_ICON_SVG },
   {
     id: "classroom",
     label: "Google Classroom",
@@ -179,7 +179,7 @@ export function resolveCloak(settings: Settings): { title: string; icon: string 
   }
   if (activeCloakId === "custom") {
     return {
-      title: settings.customTitle.trim() || "Frosted",
+      title: settings.customTitle.trim() || "StudyHub",
       icon: settings.customIcon.trim() || FROSTED_ICON_SVG,
     };
   }
@@ -187,7 +187,7 @@ export function resolveCloak(settings: Settings): { title: string; icon: string 
   if (cloak && cloak.id !== "none") {
     return { title: cloak.title, icon: cloak.icon };
   }
-  return { title: "Frosted", icon: FROSTED_ICON_SVG };
+  return { title: "StudyHub", icon: FROSTED_ICON_SVG };
 }
 
 /** Updates the document favicon immediately across all browsers */

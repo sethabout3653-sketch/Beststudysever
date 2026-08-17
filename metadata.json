@@ -1,5 +1,5 @@
 {
-  "name": "Frosted Browser Games",
+  "name": "StudyHub",
   "description": "Frosted proxy browser and unblocked games library with custom themes and tabs.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
