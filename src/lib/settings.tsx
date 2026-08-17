@@ -122,7 +122,7 @@ const DEFAULTS: Settings = {
   panicKey: "`",
   panicUrl: "https://classroom.google.com",
   searchEngine: "https://duckduckgo.com/?q=%s",
-  discreetMode: false,
+  discreetMode: true,
 };
 
 const STORAGE_KEY = "frosted.settings";

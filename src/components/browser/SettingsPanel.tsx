@@ -24,7 +24,9 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
         <div className="flex items-center justify-between">
           <div className="flex items-center gap-2">
             <Sparkles className="h-4 w-4 text-foreground" />
-            <h2 className="text-lg font-light tracking-tight text-foreground">Browser Settings</h2>
+            <h2 className="text-lg font-light tracking-tight text-foreground">
+              Workspace Settings
+            </h2>
           </div>
           <button
             onClick={onClose}
@@ -35,8 +37,8 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
           </button>
         </div>
 
-        {/* Tab Cloaking */}
-        <Section title="Tab cloak">
+        {/* Academic Tab Profiles */}
+        <Section title="Academic Tab Profiles">
           <div className="grid grid-cols-2 gap-2">
             {CLOAKS.map((cloak) => (
               <button
@@ -81,21 +83,21 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
             onClick={() => openAboutBlank()}
             className="mt-3 w-full rounded-lg border border-border px-3 py-2 text-xs text-foreground transition-colors hover:bg-accent"
           >
-            Open in about:blank
+            Launch Isolated Sandbox
           </button>
         </Section>
 
         {/* Tab Close Protection */}
-        <Section title="Tab close protection">
+        <Section title="Workspace Exit Warning">
           <Toggle
-            label="Confirm before the tab is closed"
+            label="Confirm before closing workspace tabs"
             checked={settings.closeProtection}
             onChange={(v) => update({ closeProtection: v })}
           />
         </Section>
 
-        {/* Panic Key */}
-        <Section title="Panic key">
+        {/* Quick Redirect Key */}
+        <Section title="Quick Study Mode Key">
           <div className="grid grid-cols-[5rem_1fr] gap-2">
             <Field
               label="Key"
@@ -104,7 +106,7 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
               placeholder="`"
             />
             <Field
-              label="Redirect to"
+              label="Redirect URL"
               value={settings.panicUrl}
               onChange={(v) => update({ panicUrl: v })}
               placeholder="https://classroom.google.com"

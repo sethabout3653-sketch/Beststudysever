@@ -66,7 +66,7 @@ export function GameView({ directory, name, onBack, registerNav }: Props) {
       >
         <button
           onClick={onBack}
-          title="Back to Games Library"
+          title="Back to Lessons Library"
           className="flex items-center gap-1.5 rounded-full px-2.5 py-1 text-xs font-medium text-foreground transition-colors hover:bg-accent"
         >
           <ArrowLeft className="h-3 w-3" />
@@ -76,8 +76,8 @@ export function GameView({ directory, name, onBack, registerNav }: Props) {
         <div className="h-3 w-[1px] bg-border" />
 
         <button
-          aria-label="Reload game"
-          title="Reload Game"
+          aria-label="Reload lesson"
+          title="Reload Lesson"
           onClick={() => {
             if (frameRef.current) frameRef.current.src = gameEntry(directory);
           }}

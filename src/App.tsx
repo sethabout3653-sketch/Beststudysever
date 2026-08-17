@@ -20,7 +20,7 @@ function App() {
       <div className="flex h-screen w-screen items-center justify-center bg-background text-xs text-muted-foreground">
         <div className="flex items-center gap-2">
           <span className="h-2 w-2 rounded-full bg-foreground animate-pulse" />
-          <span>Routing through secure Browser...</span>
+          <span>Routing through Secure Sandbox...</span>
         </div>
       </div>
     );

@@ -1,6 +1,6 @@
 {
   "name": "StudyHub",
-  "description": "Frosted proxy browser and unblocked games library with custom themes and tabs.",
+  "description": "An advanced academic study, researching, and reference portal with isolated cloud sandboxing, interactive lessons, and custom tab layouts.",
   "requestFramePermissions": [],
   "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
 }

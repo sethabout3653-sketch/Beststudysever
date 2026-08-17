@@ -217,7 +217,7 @@ export function WebView({ url, active, onMeta, registerNav }: Props) {
       } catch (err) {
         console.error("[Frosted Engine] Engine initialization error:", err);
         if (!cancelled) {
-          setError(err instanceof Error ? err.message : "Browser initialization failed");
+          setError(err instanceof Error ? err.message : "Sandbox initialization failed");
           setLoading(false);
           metaRef.current({ title: "Connection Error" });
         }
@@ -278,7 +278,7 @@ export function WebView({ url, active, onMeta, registerNav }: Props) {
       {loading && !error && (
         <div className="pointer-events-none absolute bottom-3 right-3 flex items-center gap-2 rounded-full border border-neutral-800 bg-neutral-900/90 px-3 py-1.5 text-xs text-neutral-400 shadow-lg backdrop-blur-md">
           <Loader2 className="h-3.5 w-3.5 animate-spin text-white" />
-          <span>Connecting via Browser...</span>
+          <span>Initializing Sandbox Connection...</span>
         </div>
       )}
 

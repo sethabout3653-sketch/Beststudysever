@@ -126,7 +126,15 @@ export function BrowserShell() {
   const navigate = (input: string, id = activeId) => {
     if (!input.trim()) return;
 
-    if (input.trim() === "frosted://games" || input.trim() === "chrome://games") {
+    const lowerInput = input.trim().toLowerCase();
+    if (
+      lowerInput === "frosted://games" ||
+      lowerInput === "chrome://games" ||
+      lowerInput === "frosted://lessons" ||
+      lowerInput === "chrome://lessons" ||
+      lowerInput === "frosted://labs" ||
+      lowerInput === "chrome://labs"
+    ) {
       openGames(id);
       return;
     }

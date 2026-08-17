@@ -203,7 +203,7 @@ export function NewTabPage({ onNavigate, onOpenGames }: Props) {
           </span>
 
           <span className="text-xs text-neutral-500 font-normal mt-1.5 tracking-wider uppercase opacity-80">
-            {settings.discreetMode ? "discreet workspace" : "personalized learning portal"}
+            {settings.discreetMode ? "isolated research environment" : "unified academic sandbox"}
           </span>
         </motion.div>
 
