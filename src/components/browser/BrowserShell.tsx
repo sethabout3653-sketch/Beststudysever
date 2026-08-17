@@ -11,12 +11,6 @@ import {
   Star,
   X,
   BookOpen,
-  GraduationCap,
-  FileText,
-  Video,
-  Brain,
-  Server,
-  Code2,
 } from "lucide-react";
 import { useCallback, useRef, useState } from "react";
 import { AnimatePresence, motion } from "motion/react";
@@ -45,7 +39,7 @@ export function BrowserShell() {
   const navs = useRef<Record<string, Nav>>({});
   const ignoreMetaUrlRef = useRef(false);
   const { settings, update } = useSettings();
-  const { bookmarks, toggleUrlBookmark, isBookmarked, removeBookmark } = useBookmarks();
+  const { toggleUrlBookmark, isBookmarked } = useBookmarks();
 
   const active = tabs.find((t) => t.id === activeId) ?? tabs[0]!;
   useBrowserChrome();
@@ -501,181 +495,6 @@ export function BrowserShell() {
             <SlidersHorizontal className="h-4 w-4" />
           </button>
         </div>
-      </div>
-
-      {/* 3. Bookmarks bar on the Navigation bar */}
-      <div className="flex h-9 items-center gap-1.5 bg-black px-4 text-xs text-neutral-400 border-b border-neutral-900 overflow-x-auto no-scrollbar">
-        {bookmarks.map((b) => {
-          const isGames = b.url === "frosted://games" || b.title.toLowerCase() === "games";
-          const isMovies = b.title.toLowerCase() === "movies";
-          const isMusic = b.title.toLowerCase() === "music";
-          const isAI = b.title.toLowerCase() === "ai";
-          const isVMs = b.title.toLowerCase() === "vms";
-
-          let displayTitle = b.title;
-          const lowerTitle = b.title.toLowerCase();
-          const lowerUrl = b.url.toLowerCase();
-          let iconType:
-            | "book"
-            | "video"
-            | "audio"
-            | "brain"
-            | "server"
-            | "search"
-            | "group"
-            | "repo"
-            | "encyclopedia"
-            | "general" = "general";
-
-          if (settings.discreetMode) {
-            if (isGames) {
-              displayTitle = "Study Modules";
-              iconType = "book";
-            } else if (
-              isMovies ||
-              lowerTitle.includes("youtube") ||
-              lowerTitle.includes("movie") ||
-              lowerTitle.includes("netflix") ||
-              lowerTitle.includes("twitch") ||
-              lowerUrl.includes("youtube.com") ||
-              lowerUrl.includes("netflix.com") ||
-              lowerUrl.includes("twitch.tv")
-            ) {
-              displayTitle = "Lecture Media";
-              iconType = "video";
-            } else if (
-              isMusic ||
-              lowerTitle.includes("spotify") ||
-              lowerTitle.includes("soundcloud") ||
-              lowerTitle.includes("music") ||
-              lowerTitle.includes("songs") ||
-              lowerUrl.includes("spotify.com") ||
-              lowerUrl.includes("soundcloud.com")
-            ) {
-              displayTitle = "Audio Library";
-              iconType = "audio";
-            } else if (
-              isAI ||
-              lowerTitle.includes("gpt") ||
-              lowerTitle.includes("openai") ||
-              lowerTitle.includes("gemini") ||
-              lowerTitle.includes("claude") ||
-              lowerTitle.includes("ai") ||
-              lowerUrl.includes("chatgpt.com") ||
-              lowerUrl.includes("openai.com") ||
-              lowerUrl.includes("gemini.google.com") ||
-              lowerUrl.includes("claude.ai")
-            ) {
-              displayTitle = "Syllabus AI";
-              iconType = "brain";
-            } else if (
-              isVMs ||
-              lowerTitle.includes("vm") ||
-              lowerTitle.includes("vms") ||
-              lowerTitle.includes("virtual") ||
-              lowerUrl.includes("vmware") ||
-              lowerUrl.includes("virtualbox")
-            ) {
-              displayTitle = "Lab Resources";
-              iconType = "server";
-            } else if (lowerTitle.includes("google") || lowerUrl.includes("google.com")) {
-              displayTitle = "Research Engine";
-              iconType = "search";
-            } else if (
-              lowerTitle.includes("discord") ||
-              lowerUrl.includes("discord.com") ||
-              lowerUrl.includes("discord.gg")
-            ) {
-              displayTitle = "Study Group";
-              iconType = "group";
-            } else if (lowerTitle.includes("github") || lowerUrl.includes("github.com")) {
-              displayTitle = "Student Repo";
-              iconType = "book";
-            } else if (lowerTitle.includes("wikipedia") || lowerUrl.includes("wikipedia.org")) {
-              displayTitle = "Encyclopedia";
-              iconType = "book";
-            } else {
-              iconType = "general";
-            }
-          }
-
-          let renderIcon;
-          if (settings.discreetMode) {
-            switch (iconType) {
-              case "book":
-                renderIcon = <BookOpen className="h-3.5 w-3.5 text-neutral-400" />;
-                break;
-              case "video":
-                renderIcon = <Video className="h-3.5 w-3.5 text-neutral-400" />;
-                break;
-              case "audio":
-                renderIcon = <FileText className="h-3.5 w-3.5 text-neutral-400" />;
-                break;
-              case "brain":
-                renderIcon = <Brain className="h-3.5 w-3.5 text-neutral-400" />;
-                break;
-              case "server":
-                renderIcon = <Server className="h-3.5 w-3.5 text-neutral-400" />;
-                break;
-              case "search":
-                renderIcon = <Search className="h-3.5 w-3.5 text-neutral-400" />;
-                break;
-              case "group":
-                renderIcon = <GraduationCap className="h-3.5 w-3.5 text-neutral-400" />;
-                break;
-              default:
-                renderIcon = <FileText className="h-3.5 w-3.5 text-neutral-400" />;
-                break;
-            }
-          } else {
-            renderIcon = (
-              <>
-                <img
-                  src={getFaviconUrl(b.url)}
-                  alt=""
-                  className="h-3.5 w-3.5 rounded-sm object-contain"
-                  onError={(e) => {
-                    e.currentTarget.style.display = "none";
-                    const sibling = e.currentTarget.nextElementSibling as HTMLElement;
-                    if (sibling) sibling.style.display = "block";
-                  }}
-                />
-                <Globe className="h-3.5 w-3.5 text-neutral-500 hidden" />
-              </>
-            );
-          }
-
-          return (
-            <div key={b.id} className="group relative flex items-center">
-              <button
-                onClick={() => {
-                  if (b.url === "frosted://games") {
-                    openGames(activeId);
-                  } else {
-                    navigate(b.url);
-                  }
-                }}
-                className="flex items-center gap-1.5 rounded pl-2.5 pr-6 py-1 hover:bg-neutral-900 hover:text-white transition-colors"
-              >
-                {renderIcon}
-                <span className="truncate max-w-[120px]">{displayTitle}</span>
-              </button>
-
-              {!isGames && (
-                <button
-                  aria-label={`Delete ${b.title}`}
-                  onClick={(e) => {
-                    e.stopPropagation();
-                    removeBookmark(b.id);
-                  }}
-                  className="absolute right-1.5 top-1/2 -translate-y-1/2 hidden group-hover:flex h-3.5 w-3.5 items-center justify-center rounded-full bg-neutral-850 border border-neutral-700 text-neutral-400 hover:text-white hover:bg-neutral-800 shadow-sm transition-colors cursor-pointer z-10"
-                >
-                  <X className="h-2 w-2" />
-                </button>
-              )}
-            </div>
-          );
-        })}
       </div>
 
       {/* 4. Main Content Viewport */}

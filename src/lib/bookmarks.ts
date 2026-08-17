@@ -12,9 +12,6 @@ const DEFAULT_BOOKMARKS: Bookmark[] = [
   { id: "b-games", title: "Games", url: "frosted://games" },
   { id: "b1", title: "Google", url: "https://google.com" },
   { id: "b2", title: "YouTube", url: "https://youtube.com" },
-  { id: "b3", title: "Discord", url: "https://discord.com" },
-  { id: "b4", title: "GitHub", url: "https://github.com" },
-  { id: "b5", title: "Wikipedia", url: "https://wikipedia.org" },
 ];
 
 export function getBookmarks(): Bookmark[] {
