@@ -124,7 +124,10 @@ export function NewTabPage({ onNavigate, onOpenGames }: Props) {
         {/* Dynamic Quick Access Bookmarks Grid */}
         <div className="flex flex-wrap items-center justify-center gap-x-8 gap-y-6 max-w-lg w-full">
           {bookmarks.map((b) => {
-            const isGames = b.url === "frosted://games" || b.title.toLowerCase() === "games";
+            const isGames =
+              b.url === "frosted://games" ||
+              b.title.toLowerCase() === "games" ||
+              b.title.toLowerCase() === "play lessons";
             const isMovies = b.title.toLowerCase() === "movies";
             const isMusic = b.title.toLowerCase() === "music";
             const isAI = b.title.toLowerCase() === "ai";
