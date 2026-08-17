@@ -2,11 +2,9 @@ import { Check, Globe, Sparkles, X, Zap } from "lucide-react";
 import { motion } from "motion/react";
 
 import { CLOAKS, useSettings } from "@/lib/settings";
-import { getAvailableWispServers } from "@/lib/proxy";
 
 export function SettingsPanel({ onClose }: { onClose: () => void }) {
   const { settings, update } = useSettings();
-  const wispServers = getAvailableWispServers();
 
   return (
     <motion.div
@@ -36,26 +34,6 @@ export function SettingsPanel({ onClose }: { onClose: () => void }) {
             <X className="h-4 w-4" />
           </button>
         </div>
-
-        {/* Active Wisp Relays */}
-        <Section title="Wisp Network Relays">
-          <div className="space-y-1.5">
-            {wispServers.map((server, idx) => (
-              <div
-                key={server.url}
-                className="flex items-center justify-between rounded-lg border border-border/80 bg-background/50 px-3 py-2 text-xs"
-              >
-                <div className="flex items-center gap-2">
-                  <span className="h-1.5 w-1.5 rounded-full bg-foreground animate-pulse" />
-                  <span className="font-medium text-foreground">{server.name}</span>
-                </div>
-                <span className="font-mono text-[10px] text-muted-foreground truncate max-w-[12rem]">
-                  {server.url.replace(/^wss?:\/\//, "")}
-                </span>
-              </div>
-            ))}
-          </div>
-        </Section>
 
         {/* Tab Cloaking */}
         <Section title="Tab cloak">

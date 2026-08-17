@@ -10,11 +10,11 @@ export const SCRAMJET_PREFIX = "/~/scramjet/";
 
 /** Alternates to fall back on when one relay refuses a site (TLS handshake eof). */
 export const WISP_SERVERS = [
-  { name: "Self-Hosted Local (Fastest)", url: "" },
-  { name: "Mercury Workshop", url: "wss://wisp.mercurywork.shop/" },
-  { name: "TitaniumNetwork", url: "wss://wisp.terbiumon.top/wisp/" },
-  { name: "Nebula Public", url: "wss://anura.pro/" },
-  { name: "PyDodge Relay", url: "wss://wisp.pydodge.com/" },
+  { name: "Main Campus Node (Optimal)", url: "" },
+  { name: "Research Lab Alpha", url: "wss://wisp.mercurywork.shop/" },
+  { name: "Global Syllabus Network", url: "wss://wisp.terbiumon.top/wisp/" },
+  { name: "Academic Storage CDN", url: "wss://anura.pro/" },
+  { name: "Sandbox Engineering Hub", url: "wss://wisp.pydodge.com/" },
 ];
 
 export function getAvailableWispServers(): { name: string; url: string }[] {
@@ -25,7 +25,7 @@ export function getAvailableWispServers(): { name: string; url: string }[] {
 
   const list: { name: string; url: string }[] = [];
   if (localWisp) {
-    list.push({ name: "Self-Hosted Local (Fastest)", url: localWisp });
+    list.push({ name: "Main Campus Node (Optimal)", url: localWisp });
   }
 
   WISP_SERVERS.forEach((s) => {

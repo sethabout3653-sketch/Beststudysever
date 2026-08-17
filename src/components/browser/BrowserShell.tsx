@@ -97,6 +97,7 @@ export function BrowserShell() {
   };
 
   const closeTab = (id: string) => {
+    if (tabs.length <= 1) return;
     setTabs((prev) => {
       const next = prev.filter((t) => t.id !== id);
       if (next.length === 0) {
@@ -371,16 +372,18 @@ export function BrowserShell() {
                     </span>
 
                     {/* Tab Close Button */}
-                    <button
-                      aria-label="Close tab"
-                      onClick={(e) => {
-                        e.stopPropagation();
-                        closeTab(tab.id);
-                      }}
-                      className="flex h-4 w-4 items-center justify-center rounded-full text-neutral-500 hover:bg-neutral-800 hover:text-white transition-colors"
-                    >
-                      <X className="h-3 w-3" />
-                    </button>
+                    {tabs.length > 1 && (
+                      <button
+                        aria-label="Close tab"
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          closeTab(tab.id);
+                        }}
+                        className="flex h-4 w-4 items-center justify-center rounded-full text-neutral-500 hover:bg-neutral-800 hover:text-white transition-colors"
+                      >
+                        <X className="h-3 w-3" />
+                      </button>
+                    )}
                   </motion.div>
                 </div>
               );
@@ -453,9 +456,12 @@ export function BrowserShell() {
               onChange={(e) => setOmnibox(e.target.value)}
               spellCheck={false}
               autoComplete="off"
-              placeholder="Search or type a URL"
+              placeholder="Search for Query or URL..."
               className="w-full bg-transparent text-xs text-white outline-none placeholder:text-neutral-500"
             />
+
+            {/* Hidden submit button to support mobile browser keyboards pressing Enter/Go */}
+            <button type="submit" className="hidden" aria-hidden="true" />
 
             {/* Star Toggle in Address Bar */}
             {active.url && (

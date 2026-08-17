@@ -231,15 +231,14 @@ export function NewTabPage({ onNavigate, onOpenGames }: Props) {
               onFocus={() => setIsFocused(true)}
               onBlur={() => setIsFocused(false)}
               onChange={(e) => setValue(e.target.value)}
-              placeholder={
-                settings.discreetMode
-                  ? "Search database or type a URL..."
-                  : "Search with private engine or paste URL..."
-              }
+              placeholder="Search for Query or URL..."
               spellCheck={false}
               autoFocus
               className="flex-1 min-w-0 bg-transparent text-sm text-neutral-100 outline-none placeholder:text-neutral-600 font-normal tracking-wide"
             />
+
+            {/* Hidden submit button to support mobile browser keyboards pressing Enter/Go */}
+            <button type="submit" className="hidden" aria-hidden="true" />
 
             {/* Private/Standard Engine Dropdown */}
             <select
