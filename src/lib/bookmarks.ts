@@ -6,10 +6,10 @@ export type Bookmark = {
   url: string;
 };
 
-const STORAGE_KEY = "frosted.bookmarks.v3";
+const STORAGE_KEY = "frosted.bookmarks.v4";
 
 const DEFAULT_BOOKMARKS: Bookmark[] = [
-  { id: "b-games", title: "Play Lessons", url: "frosted://games" },
+  { id: "b-games", title: "Lessons", url: "frosted://games" },
   { id: "b1", title: "Search Lessons", url: "https://google.com" },
   { id: "b2", title: "Study Videos", url: "https://youtube.com" },
 ];

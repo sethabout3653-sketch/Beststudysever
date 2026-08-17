@@ -27,7 +27,7 @@ export function GamesLibrary({ onLaunch }: { onLaunch: (game: Game) => void }) {
         <div className="flex flex-wrap items-end justify-between gap-4 border-b border-border pb-6">
           <div>
             <h1 className="text-4xl font-light tracking-tight text-foreground">
-              {settings.discreetMode ? "Interactive Modules" : "Games"}
+              {settings.discreetMode ? "Study Lessons" : "Lessons"}
             </h1>
             <p className="mt-1 text-sm text-muted-foreground">
               {isLoading ? "Loading library…" : `${games.length} titles`}
@@ -38,7 +38,7 @@ export function GamesLibrary({ onLaunch }: { onLaunch: (game: Game) => void }) {
             <input
               value={query}
               onChange={(e) => setQuery(e.target.value)}
-              placeholder={settings.discreetMode ? "Search activities" : "Search games"}
+              placeholder={settings.discreetMode ? "Search lessons" : "Search lessons"}
               className="w-56 bg-transparent text-sm text-foreground outline-none placeholder:text-muted-foreground"
             />
           </div>
@@ -70,7 +70,7 @@ export function GamesLibrary({ onLaunch }: { onLaunch: (game: Game) => void }) {
                   src={gameCover(game)}
                   alt={`${game.name} cover art`}
                   loading="lazy"
-                  className="h-full w-full object-cover grayscale transition duration-300 group-hover:scale-105 group-hover:grayscale-0"
+                  className="h-full w-full object-cover transition duration-300 group-hover:scale-105"
                   onError={(e) => {
                     e.currentTarget.style.display = "none";
                   }}

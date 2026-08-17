@@ -152,7 +152,7 @@ export function BrowserShell() {
   const openGames = (id = activeId) => {
     const newEntry: TabHistoryEntry = {
       kind: "games",
-      title: settings.discreetMode ? "Study Activities" : "Games Library",
+      title: settings.discreetMode ? "Study Lessons" : "Lessons",
       url: "frosted://games",
       icon: "",
     };
@@ -365,7 +365,7 @@ export function BrowserShell() {
                     <span className="flex-1 truncate font-normal text-xs">
                       {settings.discreetMode && (tab.kind === "games" || tab.kind === "game")
                         ? tab.kind === "games"
-                          ? "Study Activities"
+                          ? "Study Lessons"
                           : "Simulation Task"
                         : tab.title || "New Tab"}
                     </span>

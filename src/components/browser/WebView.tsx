@@ -215,7 +215,7 @@ export function WebView({ url, active, onMeta, registerNav }: Props) {
 
         metaRef.current({ url, icon: getFaviconUrl(url) });
       } catch (err) {
-        console.error("[Frosted Proxy] Engine initialization error:", err);
+        console.error("[Frosted Engine] Engine initialization error:", err);
         if (!cancelled) {
           setError(err instanceof Error ? err.message : "Browser initialization failed");
           setLoading(false);
